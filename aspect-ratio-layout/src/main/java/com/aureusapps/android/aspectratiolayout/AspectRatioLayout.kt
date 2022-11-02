@@ -5,28 +5,31 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.core.view.children
 import com.aureusapps.android.extensions.getFloatOrFraction
+import com.aureusapps.android.extensions.obtainStyledAttributes
 
 class AspectRatioLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
-) : ViewGroup(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = R.attr.aspectRatioLayoutStyle,
+    defStyleRes: Int = R.style.AspectRatioLayoutStyle
+) : ViewGroup(context, attrs, defStyleAttr, defStyleRes) {
 
     companion object {
-        @Suppress("unused")
+
         class LayoutParams : MarginLayoutParams {
+
             var aspectRatio: Float
 
             @SuppressLint("CustomViewStyleable")
-            constructor(c: Context, attrs: AttributeSet?) : super(c, attrs) {
-                c.obtainStyledAttributes(attrs, R.styleable.AspectRatioLayout_Layout, 0, 0)
-                    .apply {
-                        aspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_Layout_layout_aspectRatio, -1f)
-                        recycle()
-                    }
+
+            constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+                context.obtainStyledAttributes(attrs, R.styleable.AspectRatioLayout_Layout).apply {
+                    aspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_Layout_layout_aspectRatio, -1f)
+                    recycle()
+                }
             }
 
             constructor(width: Int, height: Int) : super(width, height) {
@@ -51,11 +54,15 @@ class AspectRatioLayout @JvmOverloads constructor(
     private var parentAspectRatio: Float
 
     init {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.AspectRatioLayout, defStyleAttr, defStyleRes)
-            .apply {
-                parentAspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_aspectRatio, 1f)
-                recycle()
-            }
+        obtainStyledAttributes(
+            attrs,
+            R.styleable.AspectRatioLayout,
+            defStyleAttr,
+            defStyleRes
+        ).apply {
+            parentAspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_aspectRatio, 1f)
+            recycle()
+        }
     }
 
     override fun shouldDelayChildPressedState(): Boolean {
@@ -70,7 +77,6 @@ class AspectRatioLayout @JvmOverloads constructor(
         if (p is LayoutParams) {
             return LayoutParams(p as LayoutParams?)
         } else if (p is MarginLayoutParams) {
-            @Suppress("unused")
             return LayoutParams(p as MarginLayoutParams?)
         }
         return LayoutParams(p)

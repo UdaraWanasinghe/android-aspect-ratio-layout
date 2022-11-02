@@ -2,4 +2,5 @@
 <resources>
     <public name="aspectRatio" type="attr" />
     <public name="layout_aspectRatio" type="attr" />
+    <public name="aspectRatioLayoutStyle" type="attr" />
 </resources>

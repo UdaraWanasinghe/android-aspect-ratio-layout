@@ -2,10 +2,11 @@ package com.aureusapps.android.aspectratiolayout
 
 import android.view.View
 import android.view.ViewGroup
-import kotlin.math.roundToInt
 import com.aureusapps.android.aspectratiolayout.AspectRatioLayout.Companion.LayoutParams
+import kotlin.math.roundToInt
 
 internal class MeasureTool {
+
     companion object {
 
         fun findContainerSize(
@@ -222,4 +223,5 @@ internal class MeasureTool {
             return measuredWidth to measuredHeight
         }
     }
+
 }

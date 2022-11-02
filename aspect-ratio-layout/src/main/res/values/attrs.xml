@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AspectRatioLayout">
+        <attr name="aspectRatio" format="float|fraction" />
+    </declare-styleable>
+    <declare-styleable name="AspectRatioLayout_Layout">
+        <attr name="layout_aspectRatio" format="float|fraction" />
+    </declare-styleable>
+</resources>

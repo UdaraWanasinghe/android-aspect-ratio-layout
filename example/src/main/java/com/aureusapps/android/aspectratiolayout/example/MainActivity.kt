@@ -1,8 +1,7 @@
 package com.aureusapps.android.aspectratiolayout.example
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aureusapps.android.aspectratiolayout.R
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

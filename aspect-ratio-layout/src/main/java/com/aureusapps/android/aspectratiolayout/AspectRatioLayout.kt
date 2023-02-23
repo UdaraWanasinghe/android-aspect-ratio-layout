@@ -17,38 +17,34 @@ class AspectRatioLayout @JvmOverloads constructor(
     defStyleRes: Int = R.style.AspectRatioLayoutStyle
 ) : ViewGroup(context, attrs, defStyleAttr, defStyleRes) {
 
-    companion object {
+    class LayoutParams : MarginLayoutParams {
 
-        class LayoutParams : MarginLayoutParams {
+        var aspectRatio: Float
 
-            var aspectRatio: Float
+        @SuppressLint("CustomViewStyleable")
 
-            @SuppressLint("CustomViewStyleable")
-
-            constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-                context.obtainStyledAttributes(attrs, R.styleable.AspectRatioLayout_Layout).apply {
-                    aspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_Layout_layout_aspectRatio, -1f)
-                    recycle()
-                }
-            }
-
-            constructor(width: Int, height: Int) : super(width, height) {
-                aspectRatio = -1f
-            }
-
-            constructor(source: MarginLayoutParams?) : super(source) {
-                aspectRatio = -1f
-            }
-
-            constructor(source: LayoutParams?) : super(source) {
-                aspectRatio = source?.aspectRatio ?: -1f
-            }
-
-            constructor(source: ViewGroup.LayoutParams) : super(source) {
-                aspectRatio = -1f
+        constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+            context.obtainStyledAttributes(attrs, R.styleable.AspectRatioLayout_Layout).apply {
+                aspectRatio = getFloatOrFraction(R.styleable.AspectRatioLayout_Layout_layout_aspectRatio, -1f)
+                recycle()
             }
         }
 
+        constructor(width: Int, height: Int) : super(width, height) {
+            aspectRatio = -1f
+        }
+
+        constructor(source: MarginLayoutParams?) : super(source) {
+            aspectRatio = -1f
+        }
+
+        constructor(source: LayoutParams?) : super(source) {
+            aspectRatio = source?.aspectRatio ?: -1f
+        }
+
+        constructor(source: ViewGroup.LayoutParams) : super(source) {
+            aspectRatio = -1f
+        }
     }
 
     private var parentAspectRatio: Float

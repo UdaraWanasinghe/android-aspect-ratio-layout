@@ -2,7 +2,7 @@ package com.aureusapps.android.aspectratiolayout
 
 import android.view.View
 import android.view.ViewGroup
-import com.aureusapps.android.aspectratiolayout.AspectRatioLayout.Companion.LayoutParams
+import com.aureusapps.android.aspectratiolayout.AspectRatioLayout.LayoutParams
 import kotlin.math.roundToInt
 
 internal class MeasureTool {

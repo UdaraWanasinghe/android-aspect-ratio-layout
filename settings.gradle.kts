@@ -30,5 +30,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "aspect-ratio-layout"
+rootProject.name = "android-aspect-ratio-layout"
 include("aspect-ratio-layout", "example")

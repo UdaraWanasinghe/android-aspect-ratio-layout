@@ -6,7 +6,7 @@
 
 ```groovy
 dependencies {
-    implementation "com.aureusapps.android:aspect-ratio-layout:1.0.2"
+    implementation "com.aureusapps.android:aspect-ratio-layout:1.0.3"
 }
 ```
 
